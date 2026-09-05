@@ -8,10 +8,12 @@
   --hover: #171b21;
 }
 * { box-sizing: border-box; }
-html { background: var(--bg); }
+html { background: var(--bg); max-width: 100%; overflow-x: hidden; }
 body {
   margin: 0;
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 20% 0%, rgba(255,255,255,.035), transparent 35%),
     var(--bg);
@@ -24,14 +26,16 @@ body {
   width: min(760px, calc(100% - 40px));
   margin: 0 auto;
   padding: 96px 0 48px;
+  min-width: 0;
 }
-.hero { padding-bottom: 64px; }
+.hero { padding-bottom: 64px; min-width: 0; }
 .eyebrow {
   margin: 0 0 14px;
   color: var(--sub);
   font-size: 13px;
   letter-spacing: .16em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 h1 {
   margin: 0;
@@ -39,6 +43,7 @@ h1 {
   line-height: 1.25;
   font-weight: 650;
   letter-spacing: .03em;
+  overflow-wrap: anywhere;
 }
 h1 span {
   color: var(--sub);
@@ -51,10 +56,12 @@ h1 span {
   color: var(--sub);
   font-size: 14px;
   line-height: 1.8;
+  overflow-wrap: anywhere;
 }
 section {
   padding: 34px 0;
   border-top: 1px solid var(--line);
+  min-width: 0;
 }
 h2 {
   margin: 0 0 16px;
@@ -64,12 +71,13 @@ h2 {
   letter-spacing: .14em;
   text-transform: uppercase;
 }
-.links { display: grid; gap: 8px; }
+.links { display: grid; gap: 8px; min-width: 0; }
 .links a, .item, .follow-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 54px;
+  min-width: 0;
   padding: 0 16px;
   border: 1px solid transparent;
   border-radius: 8px;
@@ -77,6 +85,9 @@ h2 {
   text-decoration: none;
   transition: background .15s ease, border-color .15s ease, transform .15s ease;
 }
+.links a > span:first-child,
+.item > span:first-child,
+.follow-link > span:first-child { min-width: 0; overflow-wrap: anywhere; }
 .links a:hover, .links a:focus-visible,
 .follow-link:hover, .follow-link:focus-visible {
   background: var(--hover);
@@ -84,7 +95,7 @@ h2 {
   transform: translateX(2px);
   outline: none;
 }
-.arrow { color: var(--muted); font-size: 14px; }
+.arrow { color: var(--muted); font-size: 14px; flex: 0 0 auto; margin-left: 10px; }
 .muted { color: var(--muted); }
 .note { font-size: 12px; color: var(--muted); }
 footer {
@@ -93,7 +104,7 @@ footer {
   color: #59616b;
   font-size: 12px;
 }
-.latest-news { display: grid; gap: 8px; }
+.latest-news { display: grid; gap: 8px; min-width: 0; }
 .latest-news .item {
   align-items: flex-start;
   min-height: 0;
@@ -109,15 +120,18 @@ footer {
   font-size: 11px;
   letter-spacing: .08em;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 .news-title {
   font-size: 15px;
   line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 .news-body {
   color: var(--sub);
   font-size: 13px;
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 .latest-news a.item {
   color: var(--text);
@@ -138,22 +152,30 @@ footer {
 }
 .tool-label {
   display: grid;
-  grid-template-columns: 6.5em 1fr;
+  grid-template-columns: minmax(0, 6.5em) minmax(0, 1fr);
   column-gap: 18px;
   align-items: baseline;
+  min-width: 0;
 }
-.tool-name { white-space: nowrap; }
-.tool-title { white-space: nowrap; }
+.tool-name,
+.tool-title { white-space: nowrap; min-width: 0; }
 
 @media (max-width: 600px) {
   .page { width: min(100% - 28px, 760px); padding-top: 64px; }
   .hero { padding-bottom: 48px; }
-  h1 span { display: block; margin-top: 8px; }
+  h1 span { display: block; margin-top: 8px; white-space: normal; }
   section { padding: 28px 0; }
+  .links a, .follow-link { padding-left: 14px; padding-right: 14px; }
 }
 @media (max-width: 420px) {
+  .page { width: calc(100% - 24px); }
   .tool-label {
-    grid-template-columns: 6.2em 1fr;
-    column-gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-start;
   }
+  .tool-name,
+  .tool-title { white-space: normal; overflow-wrap: anywhere; }
+  .latest-news .item { padding: 14px; }
 }

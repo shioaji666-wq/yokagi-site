@@ -28,4 +28,4 @@ window.YOKAGI_NEWS = [
 ## Cloudflare
 GitHubリポジトリへ置き、Cloudflare Workers & Pages の Git接続でデプロイします。
 
-Git接続確認用更新: 2026-09-05
+Git接続確認用更新: 2026-09-05 18:10 JST

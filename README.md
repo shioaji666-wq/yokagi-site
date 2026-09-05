@@ -26,4 +26,6 @@ window.YOKAGI_NEWS = [
 `money.yokagi.jp` 側も `https://yokagi.jp/news.js` を参照するため、Yokagi本体の `news.js` を更新すると各ツールにも同じ最新情報を出せます。
 
 ## Cloudflare
-GitHubリポジトリへ置き、Cloudflare Workers & Pages の Git接続でデプロイする想定です。
+GitHubリポジトリへ置き、Cloudflare Workers & Pages の Git接続でデプロイします。
+
+Git接続確認用更新: 2026-09-05

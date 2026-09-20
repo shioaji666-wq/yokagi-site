@@ -1,5 +1,12 @@
 window.YOKAGI_NEWS = [
   {
+    date: "2026-09-19",
+    category: "tool",
+    title: "FF14 制作手帳ナビをアップデートしました",
+    body: "制作手帳ナビの機能改善と調整を行いました。",
+    url: "https://yokagi.jp/tools/ff14-crafting-notebook/"
+  },
+  {
     date: "2026-09-05",
     category: "tool",
     title: "「くらしのお金シミュレーター」を公開しました",
